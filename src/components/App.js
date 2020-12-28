@@ -1,6 +1,8 @@
 import React, { useReducer, useState } from 'react';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+import Event from './Event'
 import reducer from '../reducers/';//indexは省略可
 
 const App = () => {
@@ -10,7 +12,6 @@ const App = () => {
 
   const addEvent = (e) => {
     e.preventDefault();//画面のリロードを行わない
-    // console.log({title, body})
     dispatch({
       //action
       type: 'CREATE_EVENT',
@@ -20,8 +21,6 @@ const App = () => {
     setTitle('')
     setBody('')
   }
-
-  console.log({state})//なぜ波括弧
 
   return (
     <div className="container-fluid">
@@ -53,7 +52,8 @@ const App = () => {
           </tr>
         </thead>
         <tbody>
-
+          { state.map((event) => (<Event key={event.id} event={event} dispatch={dispatch} />))}
+  
         </tbody>
       </table>
     </div>

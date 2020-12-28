@@ -14,6 +14,8 @@ const events = (state = [], action) => {//stateはデフォルト値を設定
             return [...state, { id, ...event}]//idはid: idの短縮系
 
         case 'DELETE_EVENT':
+            //actionから渡ってきたものと違うものだけ抽出
+            return state.filter(event => event.id !== action.id)
         case 'DELETE_ALL_EVENTS':
             return []
         default:
