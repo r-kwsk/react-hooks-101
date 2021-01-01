@@ -4,8 +4,8 @@ import Event from './Event';
 import AppContext from '../contexts/AppContext'
 
 
-const Events = ({ state, dispatch }) => {
-    const value = useContext(AppContext)
+const Events = () => {
+    const { state } = useContext(AppContext)
     return(
         <>
         <h4>イベント一覧</h4>
@@ -20,7 +20,7 @@ const Events = ({ state, dispatch }) => {
             </thead>
             <tbody>
             {/* event={event}などは子コンポーネントにpropsを渡している */}
-            { state.map((event) => (<Event key={event.id} event={event} dispatch={dispatch} />))}
+            { state.map((event) => (<Event key={event.id} event={event} />))}
     
             </tbody>
         </table>
