@@ -20,7 +20,7 @@ const Events = () => {
             </thead>
             <tbody>
             {/* event={event}などは子コンポーネントにpropsを渡している */}
-            { state.map((event) => (<Event key={event.id} event={event} />))}
+            { state.events.map((event) => (<Event key={event.id} event={event} />))}
     
             </tbody>
         </table>
