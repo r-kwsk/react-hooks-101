@@ -1,4 +1,5 @@
 import React, { useEffect, useReducer } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -25,11 +26,27 @@ const App = () => {
 
   return (
     <AppContext.Provider value={{ state, dispatch }}>
-      <div className="container-fluid">
-        <EventForm />
-        <Events />
-        <OperationLogs />
-      </div>
+      <BrowserRouter>
+        <Switch>
+          {/* container-fluidってなんだっけ？？ */}
+          {/* <div className="container-fluid">
+            <Route exact path="/">
+              <EventForm />
+              <Events />
+              <OperationLogs />
+            </Route>
+          </div>   */}
+          <Route exact path="/">
+            <EventForm />
+            <Events />
+          </Route>
+          <Route exact path="/events">
+            <EventForm />
+            <Events />
+          </Route>
+          <Route exact path="/events/logs" component={OperationLogs} />
+        </Switch>
+      </BrowserRouter>
     </AppContext.Provider>
   );
 }
