@@ -13,13 +13,16 @@ const EventForm = () => {
     const [title, setTitle] = useState('')
     const [body, setBody] = useState('')
 
+    const allEventLength = state.events.length + state.eventsInProgress.length
+
     const addEvent = (e) => {
         e.preventDefault();//画面のリロードを行わない
         dispatch({
           //action
           type: CREATE_EVENT,
           title,
-          body
+          body,
+          allEventLength
         }) 
 
         dispatch({
@@ -27,8 +30,10 @@ const EventForm = () => {
           description: 'イベントを作成しました',
           operatedAt: timeCurrentIso8601()
         })
-        setTitle('')
-        setBody('')
+
+        // 以下のコードはいらない？もしかして初期化してる？
+        // setTitle('')
+        // setBody('')
     }
 
   const deleteAllEvents = (e) => {
@@ -49,7 +54,7 @@ const EventForm = () => {
   const unCreatable = title === '' || body === ''
     return(
         <>
-        <h4>イベント作成フォーム</h4>
+        <h4>r-kwskのToDoList</h4>
         <form>
             <div className="form-group">
                 <label htmlFor="formEventTitle">タイトル</label>
@@ -60,7 +65,7 @@ const EventForm = () => {
                 <textarea className="form-control" id="formEventBody" value={body} onChange={e => setBody(e.target.value)}/>
             </div>
             <button className="btn btn-primary" onClick={addEvent} disabled={unCreatable}>イベントを作成する</button>
-            <button className="btn btn-danger" onClick={deleteAllEvents} disabled={state.events.length === 0}>全てのイベントを削除する</button>
+            {/* <button className="btn btn-danger" onClick={deleteAllEvents} disabled={state.events.length === 0}>全てのイベントを削除する</button> */}
         </form>
       </>
     )
