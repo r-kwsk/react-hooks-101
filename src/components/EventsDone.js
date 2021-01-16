@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import EventInProgress from './EventInProgress';
+import EventDone from './EventDone';
 import AppContext from '../contexts/AppContext'
 
 
@@ -8,7 +8,7 @@ const EventsInProgress = () => {
     const { state } = useContext(AppContext)
     return(
         <>
-            <h4>In progress</h4>
+            <h4>Done</h4>
             <table className="table table-hover">
                 <thead>
                 <tr>
@@ -20,12 +20,10 @@ const EventsInProgress = () => {
                 </thead>
                 <tbody>
                 {/* event={event}などは子コンポーネントにpropsを渡している */}
-                { state.eventsInProgress.map((event) => (<EventInProgress key={event.id} event={event} />))}
-        
+                { state.eventsDone.map((event) => (<EventDone key={event.id} event={event} />))}
                 </tbody>
             </table>
-            <a href="/events/eventsDone" style={{textDecoration: 'underline', padding: '10px'}}>終了したタスクを確認する</a>
-            <a href="/events/logs" style={{textDecoration: 'underline', padding: '10px'}}>操作ログを確認する</a>
+            <a href="/events" style={{textDecoration: 'underline', padding: '10px'}}>一覧に戻る</a>
         </>
     )
 }

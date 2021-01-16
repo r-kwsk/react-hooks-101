@@ -1,11 +1,18 @@
 //エラー検出のための処理
+//ToDo
 export const CREATE_EVENT = 'CREATE_EVENT'
 export const DELETE_EVENT = 'DELETE_EVENT'
 export const DELETE_ALL_EVENTS = 'DELETE_ALL_EVENTS'
-export const START_EVENT = 'START_EVENT';
 
+//InProgress
+export const START_EVENT = 'START_EVENT';
 export const DELETE_EVENT_IN_PROGRESS = 'DELETE_EVENT_IN_PROGRESS';
 
+//Done
+export const FINISH_EVENT = 'FINISH_EVENT';
+export const DELETE_EVENT_DONE = 'DELETE_EVENT_DONE';
+
+//Log
 export const ADD_OPERATION_LOG = 'ADD_OPERATION_LOG';
 export const DELETE_ALL_OPERATION_LOGS = 'DELETE_ALL_OPERATION_LOGS';
 

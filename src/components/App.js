@@ -6,7 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import EventForm from './EventForm';
 import Events from './Events'
 import OperationLogs from './OperationLogs';
-import EventsInProgress from './EventsInProgress'
+import EventsInProgress from './EventsInProgress';
+import EventsDone from './EventsDone';
 import AppContext from '../contexts/AppContext';
 import reducer from '../reducers/';//indexは省略可
 
@@ -16,19 +17,21 @@ const APP_KEY = 'appWithRedux';
 const App = () => {
   
   //本番環境用
-  // const appState = localStorage.getItem(APP_KEY)
-  // const initialState = appState ? JSON.parse(appState) : {
-  //   events: [],
-  //   operationLogs: [],
-  //   eventsInProgress: []
-  // }
-
-  //検証用
-  const initialState = {
+  const appState = localStorage.getItem(APP_KEY)
+  const initialState = appState ? JSON.parse(appState) : {
     events: [],
     operationLogs: [],
-    eventsInProgress: []
+    eventsInProgress: [],
+    eventsDone: []
   }
+
+  //検証用
+  // const initialState = {
+  //   events: [],
+  //   operationLogs: [],
+  //   eventsInProgress: [],
+  //   eventsDone: []
+  // }
 
   const [state, dispatch] = useReducer(reducer, initialState)
 
@@ -58,6 +61,7 @@ const App = () => {
             <Events />
             <EventsInProgress />
           </Route>
+          <Route exact path="/events/eventsDone" component={EventsDone} />
           <Route exact path="/events/logs" component={OperationLogs} />
         </Switch>
       </BrowserRouter>

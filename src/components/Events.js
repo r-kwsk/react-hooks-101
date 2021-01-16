@@ -23,7 +23,6 @@ const Events = () => {
                 { state.events.map((event) => (<Event key={event.id} event={event} />))}
                 </tbody>
             </table>
-            <a href="/events/logs" style={{textDecoration: 'underline', padding: '10px'}}>操作ログを確認する</a>
             
         </>
     )

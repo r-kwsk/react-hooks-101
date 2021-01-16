@@ -6,23 +6,24 @@ import { timeCurrentIso8601 } from '../utils';
 
 
 const EventForm = () => {
-    const { state, dispatch } = useContext(AppContext)
+    const { dispatch } = useContext(AppContext)
 
     //以下のように新規のstateを作らない．app.jsからpropとして受け取る
     // const [state, dispatch] = useReducer(reducer, [])
     const [title, setTitle] = useState('')
     const [body, setBody] = useState('')
-
-    const allEventLength = state.events.length + state.eventsInProgress.length
+    const [createCount, setCreateCount] = useState(0)
 
     const addEvent = (e) => {
         e.preventDefault();//画面のリロードを行わない
+        setCreateCount(createCount + 1)
+        console.log(createCount)
         dispatch({
           //action
           type: CREATE_EVENT,
           title,
           body,
-          allEventLength
+          createCount
         }) 
 
         dispatch({
