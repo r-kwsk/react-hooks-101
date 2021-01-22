@@ -17,21 +17,22 @@ const APP_KEY = 'appWithRedux';
 const App = () => {
   
   //本番環境用
-  const appState = localStorage.getItem(APP_KEY)
-  const initialState = appState ? JSON.parse(appState) : {
+  // const appState = localStorage.getItem(APP_KEY)
+  // const initialState = appState ? JSON.parse(appState) : {
+  //   events: [],
+  //   operationLogs: [],
+  //   eventsInProgress: [],
+  //   eventsDone: [],
+  //   createCount: 0,
+  // }
+
+  // 検証用
+  const initialState = {
     events: [],
     operationLogs: [],
     eventsInProgress: [],
     eventsDone: []
   }
-
-  //検証用
-  // const initialState = {
-  //   events: [],
-  //   operationLogs: [],
-  //   eventsInProgress: [],
-  //   eventsDone: []
-  // }
 
   const [state, dispatch] = useReducer(reducer, initialState)
 

@@ -6,18 +6,18 @@ import { timeCurrentIso8601 } from '../utils';
 
 
 const EventForm = () => {
-    const { dispatch } = useContext(AppContext)
+    const { state, dispatch } = useContext(AppContext)
 
     //以下のように新規のstateを作らない．app.jsからpropとして受け取る
     // const [state, dispatch] = useReducer(reducer, [])
     const [title, setTitle] = useState('')
     const [body, setBody] = useState('')
     const [createCount, setCreateCount] = useState(0)
-
+    console.log(state.test)
     const addEvent = (e) => {
         e.preventDefault();//画面のリロードを行わない
         setCreateCount(createCount + 1)
-        console.log(createCount)
+
         dispatch({
           //action
           type: CREATE_EVENT,
@@ -32,9 +32,9 @@ const EventForm = () => {
           operatedAt: timeCurrentIso8601()
         })
 
-        // 以下のコードはいらない？もしかして初期化してる？
-        // setTitle('')
-        // setBody('')
+        // テキスト欄の初期化
+        setTitle('')
+        setBody('')
     }
 
   const deleteAllEvents = (e) => {

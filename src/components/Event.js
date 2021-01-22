@@ -41,6 +41,12 @@ const Event = ({ event }) => {
             type: DELETE_EVENT,
             id,//id: idの短縮系
             })
+
+            dispatch({
+                type: ADD_OPERATION_LOG,
+                description: `${id}のイベントを開始しました`,
+                operatedAt: timeCurrentIso8601()
+            })
         }
     }
 

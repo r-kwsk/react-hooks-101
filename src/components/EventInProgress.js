@@ -41,6 +41,12 @@ const EventInProgress = ({ event }) => {
             type: DELETE_EVENT_IN_PROGRESS,
             id,//id: idの短縮系
             })
+
+            dispatch({
+                type: ADD_OPERATION_LOG,
+                description: `${id}のイベントを終了しました`,
+                operatedAt: timeCurrentIso8601()
+            })
         }
     }
 

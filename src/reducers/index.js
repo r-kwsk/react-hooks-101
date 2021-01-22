@@ -9,5 +9,6 @@ export default combineReducers({
     events,
     operationLogs,
     eventsInProgress,
-    eventsDone
+    eventsDone,
+
 })
