@@ -1,6 +1,6 @@
 import React,{ useState, useContext } from 'react';
 
-import { CREATE_EVENT, DELETE_ALL_EVENTS, ADD_OPERATION_LOG} from '../actions'
+import { CREATE_EVENT, DELETE_ALL_EVENTS, ADD_OPERATION_LOG, CREATE_COUNT_PLUS} from '../actions'
 import AppContext from '../contexts/AppContext';
 import { timeCurrentIso8601 } from '../utils';
 
@@ -12,12 +12,16 @@ const EventForm = () => {
     // const [state, dispatch] = useReducer(reducer, [])
     const [title, setTitle] = useState('')
     const [body, setBody] = useState('')
-    const [createCount, setCreateCount] = useState(0)
-    console.log(state.test)
+    // const [createCount, setCreateCount] = useState(0)
+    let createCount = state.createCount
+
     const addEvent = (e) => {
         e.preventDefault();//画面のリロードを行わない
-        setCreateCount(createCount + 1)
-
+        
+        dispatch({
+          type: CREATE_COUNT_PLUS,
+          createCount
+        })
         dispatch({
           //action
           type: CREATE_EVENT,
