@@ -59,7 +59,8 @@ const EventForm = () => {
   const unCreatable = title === '' || body === ''
     return(
         <>
-        <h4>r-kwskのToDoList</h4>
+        <h4 style={{textAlign: 'center',
+    padding: '20px', borderBottom: 'solid 5px #ffc800'}}>r-kwskのToDoList</h4>
         <form>
             <div className="form-group">
                 <label htmlFor="formEventTitle">タイトル</label>
@@ -69,7 +70,7 @@ const EventForm = () => {
                 <label htmlFor="formEventBody">ボディー</label>
                 <textarea className="form-control" id="formEventBody" value={body} onChange={e => setBody(e.target.value)}/>
             </div>
-            <button className="btn btn-primary" onClick={addEvent} disabled={unCreatable}>イベントを作成する</button>
+            <button className="btn btn-primary" onClick={addEvent} disabled={unCreatable} style={{marginTop: '10px',marginBottom: '10px'}}>イベントを作成する</button>
             {/* <button className="btn btn-danger" onClick={deleteAllEvents} disabled={state.events.length === 0}>全てのイベントを削除する</button> */}
         </form>
       </>
